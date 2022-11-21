@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>禁止packagekit服务 | Deloz.Net</title>
+<meta name="description" content="What I See Is What I Get">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://deloz.net/favicon.ico?v=1669012064624">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://deloz.net/styles/main.css">
+
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://deloz.net">Deloz.Net</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>禁止packagekit服务</h1>
+            <p class="article-meta">
+              2022-07-25
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p><code>/usr/bin/python /usr/share/PackageKit/helpers/yum/yumBackend.py get-updates none</code> 经常占用了<code>yum</code></p>
+<pre><code>Loaded plugins: fastestmirror, langpacks
+Existing lock /var/run/yum.pid: another copy is running as pid 4042.
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: PackageKit
+    Memory :  39 M RSS (799 MB VSZ)
+    Started: Mon Jul 25 23:54:37 2022 - 00:28 ago
+    State  : Sleeping, pid: 4042
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: PackageKit
+    Memory :  39 M RSS (799 MB VSZ)
+    Started: Mon Jul 25 23:54:37 2022 - 00:30 ago
+    State  : Sleeping, pid: 4042
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: PackageKit
+    Memory :  39 M RSS (799 MB VSZ)
+    Started: Mon Jul 25 23:54:37 2022 - 00:32 ago
+    State  : Sleeping, pid: 4042
+
+</code></pre>
+<p>禁止它</p>
+<pre><code>sudo systemctl stop packagekit 
+sudo systemctl mask packagekit 
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://deloz.net/post/cron-cheatsheet/">
+                <h3 class="post-title">
+                  Cron cheatsheet
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://deloz.net/images/avatar.png?v=1669012064624" class="no-responsive avatar">
+    <div class="text-muted">What I See Is What I Get</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://deloz.net/post/https_proxy-yu-https_proxy-de-qu-bie/">http(s)_proxy与HTTP(s)_PROXY的区别</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/yan-chang-navicat-shi-yong-shi-jian/">延长Navicat试用时间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/linux-pi-liang-she-zhi-xin-wen-jian-he-mu-lu-de-mo-ren-quan-xian/">Linux批量设置新文件和目录的默认权限</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/jin-zhi-packagekit-fu-wu/">禁止packagekit服务</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/cron-cheatsheet/">Cron cheatsheet</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/fix-vmware-workstation-after-reboot/">fix VMware Workstation after reboot</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://deloz.net/post/about/">关于</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://deloz.net/tag/http_proxy/" class="badge warning">
+          http_proxy
+        </a>
+      
+        <a href="https://deloz.net/tag/linux/" class="badge warning">
+          Linux
+        </a>
+      
+        <a href="https://deloz.net/tag/shell/" class="badge secondary">
+          Shell
+        </a>
+      
+        <a href="https://deloz.net/tag/navicat/" class="badge ">
+          Navicat
+        </a>
+      
+        <a href="https://deloz.net/tag/UUaMlqGLV/" class="badge secondary">
+          xfs_repair
+        </a>
+      
+        <a href="https://deloz.net/tag/Ga_2FNlQK5/" class="badge secondary">
+          VMware Workstation
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://deloz.net/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
