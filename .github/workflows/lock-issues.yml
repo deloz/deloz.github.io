@@ -1,0 +1,13 @@
+name: Lock issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: OSDKDev/lock-issues@v1.1
+        with:
+          repo-token: "${{ secrets.GH_TOKEN }}"
